@@ -6,23 +6,26 @@ export function renderNavbar(currentUser, onNavigate) {
   const container = document.getElementById('navbar-container');
   if (!container) return;
 
+  const roleCourt = currentUser
+    ? (currentUser.role === 'professionnel' ? 'Pro Santé' : formatRoleLabel(currentUser.role))
+    : '';
+
   container.innerHTML = `
-    <div style="display:flex;align-items:center;gap:0.75rem;">
-      <button class="menu-toggle" id="sidebar-toggle-btn">☰</button>
-      <span class="font-bold">Assistant Médicaments Sans Ordonnance</span>
+    <div style="display:flex;align-items:center;gap:0.55rem;min-width:0;overflow:hidden;">
+      <button class="menu-toggle" id="sidebar-toggle-btn" aria-label="Menu">☰</button>
+      <span class="font-bold navbar-title">MediAssist IA</span>
     </div>
-    <div style="display:flex;align-items:center;gap:0.85rem;">
+    <div class="navbar-actions" style="display:flex;align-items:center;gap:0.5rem;">
       ${
         currentUser
           ? `
-            <span class="badge badge-info">${formatRoleLabel(currentUser.role)}</span>
+            <span class="badge badge-info">${roleCourt}</span>
             ${
               currentUser.role === 'professionnel'
-                ? `<span class="badge badge-success">⭐ ${currentUser.points} pts</span>`
+                ? `<span class="badge badge-success">⭐ ${currentUser.points}</span>`
                 : ''
             }
-            <span class="text-sm font-bold">${escapeHTML(currentUser.nom)}</span>
-            <button class="btn btn-outline btn-sm" id="logout-btn">Déconnexion</button>
+            <button class="btn btn-outline btn-sm" id="logout-btn">Quitter</button>
           `
           : `
             <button class="btn btn-outline btn-sm" id="nav-login-btn">Connexion</button>
