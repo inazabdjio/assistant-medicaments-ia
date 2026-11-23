@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>MediAssist IA — Assistant Intelligent des Médicaments</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <!-- Moteur OCR réel pour lire le texte sur les boîtes de médicaments depuis la caméra -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div id="notification-container"></div>
+  <div id="modal-container"></div>
+
+  <div class="app-layout">
+    <aside id="sidebar-container" class="sidebar"></aside>
+    <div class="main-wrapper">
+      <header id="navbar-container" class="navbar"></header>
+      <main id="app-content" class="app-content"></main>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
